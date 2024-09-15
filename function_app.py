@@ -276,7 +276,7 @@ def batch_process_files(sftp):
                 df = read_flexible_csv2(file_handle)
             else:
                 logging.info(f"Processing standard file: {file}")
-                df = read_flexible_csv(file_handle)
+                df = read_flexible_csv(file_handle, file)
             
             # Log the DataFrame shape to check if it's empty
             logging.info(f"DataFrame shape: {df.shape}")
