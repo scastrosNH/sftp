@@ -94,6 +94,16 @@ def read_flexible_csv(file_handle,filename):
     df = pd.DataFrame(data, columns=columns)
     print(df)
 
+    # Replace NaN with 0 for all numeric columns
+    numeric_columns = [
+        "RmsFrequency", "RmsCurrentPhsA", "RmsCurrentPhsB", "RmsCurrentPhsC",
+        "TotalRmsPowerFactor", "RmsVoltagePhsAB", "RmsVoltagePhsBC", "RmsVoltagePhsCA",
+        "RmsActivePowerPhsA", "RmsActivePowerPhsB", "RmsActivePowerPhsC",
+        "TotalDeliveredActiveEnergy", "TotalRmsActivePower", 
+    ]
+    df[numeric_columns] = df[numeric_columns].apply(pd.to_numeric, errors='coerce').fillna(0)
+    return df
+
 # read flexible Csv2 only when origin file is DOSIFICADO (as it has a different structure)
 def read_flexible_csv2(file_handle):
     # Read from file handle and decode as necessary
