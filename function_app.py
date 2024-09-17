@@ -102,6 +102,10 @@ def read_flexible_csv(file_handle,filename):
         "TotalDeliveredActiveEnergy", "TotalRmsActivePower", 
     ]
     df[numeric_columns] = df[numeric_columns].apply(pd.to_numeric, errors='coerce').fillna(0)
+    
+    #division of Energy and power to K
+    df["TotalDeliveredActiveEnergy"] = df["TotalDeliveredActiveEnergy"] / 1000
+    df["TotalRmsActivePower"] = df["TotalRmsActivePower"] / 1000
     return df
 
 # read flexible Csv2 only when origin file is DOSIFICADO (as it has a different structure)
@@ -236,7 +240,12 @@ def read_flexible_csv3(file_handle):
         "TotalDeliveredActiveEnergy", "TotalRmsActivePower","RmsMaxCurrentPhsC","RmsCurrentNeut" 
     ]
     df[numeric_columns] = df[numeric_columns].apply(pd.to_numeric, errors='coerce').fillna(0)
+    
+     #division of Energy and power to K
+    df["TotalDeliveredActiveEnergy"] = df["TotalDeliveredActiveEnergy"] / 1000
+    df["TotalRmsActivePower"] = df["TotalRmsActivePower"] / 1000
     return df
+
 
 def is_dosificado_file(filename):
     # Use a regular expression to check if 'DOSIFICADO' is exactly part of the filename pattern you expect
