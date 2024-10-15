@@ -1,15 +1,14 @@
 {
-    "bindings": [
-      {
-        "name": "myTimer",
-        "type": "timerTrigger",
-        "direction": "in",
-        "schedule": "0 */10 * * * *",
-        "runOnStartup": true,
-        "useMonitor": false
-      }
-    ],
-    "scriptFile": "function_app2.py",
-    "entryPoint": "cron_PAS800"
-  }
-  
+  "scriptFile": "function_app.py",
+  "entryPoint": "cron_PAS800",
+  "bindings": [
+    {
+      "name": "myTimer",
+      "type": "timerTrigger",
+      "direction": "in",
+      "schedule": "0 */10 * * * *",
+      "runOnStartup": true,
+      "useMonitor": false
+    }
+  ]
+}
